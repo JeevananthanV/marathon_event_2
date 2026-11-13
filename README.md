@@ -1,6 +1,6 @@
-# 🏃 Run Beyond Limits 2026
+# 🏃 Run Beyond Limits 2026 — Marathon Event Management System
 
-[![View Site](https://img.shields.io/badge/View%20Site-marathon--website--five.vercel.app-brightgreen?logo=vercel&logoColor=white)](https://marathon-website-five.vercel.app/)
+[![Repository](https://img.shields.io/badge/GitHub-JeevananthanV%2Fmarathon__event__2-blue?logo=github)](https://github.com/JeevananthanV/marathon_event_2)
 [![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Node.js](https://img.shields.io/badge/Node.js-v18+-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org)
@@ -10,14 +10,14 @@ A full-stack marathon event registration and management platform for **Run Beyon
 
 ---
 
-## 🔗 Live Links
+## 🔗 Repository & Links
 
-| | URL |
+| Detail | Link |
 |---|---|
-| 🌐 **View Site** | [https://marathon-website-five.vercel.app/](https://marathon-website-five.vercel.app/) |
-| 🔐 **View Admin Dashboard** | [https://marathon-website-five.vercel.app/admin](https://marathon-website-five.vercel.app/admin) |
-
-> **Demo Credentials** — Username: `admin` / Password: `password123`
+| **GitHub Repository** | [https://github.com/JeevananthanV/marathon_event_2](https://github.com/JeevananthanV/marathon_event_2) |
+| **Author** | [Jeevananthan V](https://github.com/JeevananthanV) |
+| **Admin Route** | `/admin` |
+| **Demo Credentials** | Username: `admin` / Password: `password123` |
 
 ---
 
@@ -51,67 +51,56 @@ A full-stack marathon event registration and management platform for **Run Beyon
 
 ---
 
-## 🛠️ Tech Stack
+## 📁 Project Structure
 
-| Layer | Technology |
-|---|---|
-| **Frontend** | TanStack Start (SSR), React 19, TypeScript, Tailwind CSS v4 |
-| **Backend** | Node.js, Express.js, MongoDB Atlas, Mongoose |
-| **Auth** | JWT (JSON Web Tokens) + bcryptjs |
-| **Email** | Nodemailer (Gmail SMTP) |
-| **PDF** | PDFKit |
-| **Deployment** | Render.com (Web Services) |
-
----
-
-## 🏁 Race Categories
-
-| Category | Distance | Entry Fee |
-|---|---|---|
-| Fun Run | 5K | ₹499 |
-| Challenge | 10K | ₹799 |
-| Half Marathon | 21K | ₹999 |
-
----
-
-## 📡 Core API Routes
-
-| Method | Endpoint | Description | Auth |
-|---|---|---|---|
-| `POST` | `/api/register` | Register new participant | Public |
-| `POST` | `/api/admin/login` | Admin login → returns JWT | Public |
-| `GET` | `/api/admin/participants` | List all participants | Admin JWT |
-| `GET` | `/api/admin/stats` | Dashboard statistics | Admin JWT |
-| `PUT` | `/api/admin/participants/:id/payment` | Approve/reject payment, assign BIB | Admin JWT |
-| `GET` | `/api/certificate/lookup` | Find participant by email or phone | Public |
-| `GET` | `/api/certificate/download/:id` | Generate & download PDF certificate | Public |
+```
+Marathon_Event_2/
+├── backend/
+│   ├── config/          # MongoDB connection & env setup
+│   ├── controllers/     # Route logic (auth, participants, payments, contacts)
+│   ├── middleware/      # JWT auth, error handlers
+│   ├── models/          # Mongoose models (Participant, User, Contact)
+│   ├── routes/          # Express route declarations
+│   ├── services/        # Email (Nodemailer), PDF generation
+│   ├── seeds/           # Database seed scripts
+│   └── server.js        # Express application entry
+│
+└── marathon frontend/
+    ├── src/
+    │   ├── components/  # Reusable UI components & admin views
+    │   ├── pages/       # Route pages (Home, Register, Certificate, Admin)
+    │   ├── context/     # Auth & theme context
+    │   └── utils/       # API client & helpers
+    └── package.json
+```
 
 ---
 
-## 🚀 Local Development
+## 🚀 Local Setup
+
+### Clone Repository
+
+```bash
+git clone https://github.com/JeevananthanV/marathon_event_2.git
+cd marathon_event_2
+```
 
 ### 1. Backend Setup
 
 Create `backend/.env`:
 ```env
 PORT=5000
-MONGODB_URI=your_mongodb_atlas_connection_string
+MONGODB_URI=your_mongodb_atlas_uri
 JWT_SECRET=your_jwt_secret
-BASE_URL=http://localhost:5000
-ADMIN_USERNAME=admin
-ADMIN_PASSWORD=password123
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=465
 SMTP_USER=your_email@gmail.com
 SMTP_PASS=your_gmail_app_password
-SMTP_FROM=your_email@gmail.com
-DISABLE_WHATSAPP=true
+CLIENT_URL=http://localhost:8080
 ```
 
 ```bash
 cd backend
 npm install
-npm run seed     # Seeds admin + 100 test participants
+npm run seed     # Seeds admin + test participants
 npm run dev      # Starts API at http://localhost:5000
 ```
 
@@ -124,32 +113,16 @@ VITE_API_URL=http://localhost:5000
 
 ```bash
 cd "marathon frontend"
-bun install      # or npm install
+npm install
 npm run dev      # Starts site at http://localhost:8080
 ```
 
 ---
 
-## 🌐 Deployment (Render.com)
-
-### Backend Web Service
-| Setting | Value |
-|---|---|
-| Root Directory | `backend` |
-| Build Command | `npm install` |
-| Start Command | `npm start` |
-| Env: `DISABLE_WHATSAPP` | `true` |
-
-### Frontend Web Service
-| Setting | Value |
-|---|---|
-| Root Directory | `marathon frontend` |
-| Build Command | `bun install && NITRO_PRESET=node-server npm run build` |
-| Start Command | `node .output/server/index.mjs` |
-| Env: `VITE_API_URL` | Your backend Render URL |
-
----
-
 ## 👨‍💻 Author
 
-**Gokulraj N** — [@Gokulraj-N80](https://github.com/Gokulraj-N80)
+**Jeevananthan V** — [@JeevananthanV](https://github.com/JeevananthanV)
+
+## License
+
+MIT
