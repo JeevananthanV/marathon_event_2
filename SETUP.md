@@ -107,3 +107,4 @@ npm run build
 
 - **Admin login fails**: Run `npm run seed` inside `backend/` to regenerate the default administrator account.
 - **Email sending fails**: Set `DISABLE_WHATSAPP=true` and confirm valid Gmail App Password in `SMTP_PASS`.
+
